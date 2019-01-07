@@ -20,7 +20,7 @@ class FrontControllers
 		$route = str_replace($route, "", $uri);
 		self::$route = $route;
 
-		$counter = 0;
+		$i = 0;
 		self::$routes = $routelist;
 		foreach (self::$routes as $route => $controller) {
 			self::$routes[$route] = $controller;
@@ -40,7 +40,7 @@ class FrontControllers
 						throw new \Exception("<h1 style=\"color: red\">Error: Method didnt exists</h1>");
 					}
 
-                    $counter++;
+					$i++;
 				} catch (\Exception $e) {
 					echo $e->getMessage();
 				}
@@ -50,8 +50,11 @@ class FrontControllers
 		if (self::$route == "") {
 			self::$route = "/";
 		}
-		if ($counter == 0) {
-			echo '<h1 style="color: red">Error: Route "' . $uri . '" is not declared in route file</h1>';
+		if ($i == 0) {
+            $uri = $_SERVER['REQUEST_URI'];
+            $route = str_replace("index.php", "", $_SERVER['SCRIPT_NAME']);
+            $route = str_replace($route, "", $uri);
+			echo '<h1 style="color: red">Error: Route "' . $route . '" is not declared in route file</h1>';
 		}
 
 
