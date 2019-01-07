@@ -2,8 +2,8 @@
 
 class Welcome
 {
-	public function welcome()
+	public function index()
 	{
-		 return Application\Database::select();
+		 return 'Hello';
     }
 }

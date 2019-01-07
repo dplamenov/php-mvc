@@ -2,4 +2,4 @@
 
 use Application\Route;
 
-Route::get("/","Welcome@welcome");
+Route::get("/","Welcome@index");
