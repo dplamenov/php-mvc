@@ -10,7 +10,8 @@ class Base
 		foreach ($data as $key => $value) {
 			$$key = $value;
 		}
-		include_once '../views/' . $view . ".php";
+		$file = file_get_contents('../views/' . $view . ".php");
+		return $file;
 
 
 	}

@@ -6,7 +6,7 @@ class Welcome
 {
     public function index()
     {
-        return Base::View('welcome');
+        return Base::View('welcome', ['data' => 'data']);
     }
 
 }
