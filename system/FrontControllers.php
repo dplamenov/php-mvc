@@ -21,7 +21,12 @@ class FrontControllers
 		self::$route = $route;
 
 		$i = 0;
+
+		if(count($routelist) == 0){
+            throw new \Exception("<h1 style=\"color: red\">Error: Method didnt exists</h1>");
+        }
 		self::$routes = $routelist;
+
 		foreach (self::$routes as $route => $controller) {
 			self::$routes[$route] = $controller;
 			$route_new = str_replace("/", "", $route);
