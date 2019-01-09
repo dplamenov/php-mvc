@@ -11,7 +11,7 @@ class Base
 			$$key = $value;
 		}
 		include_once '../views/' . $view . ".php";
-		
+
 
 	}
 }

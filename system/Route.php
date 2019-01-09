@@ -3,7 +3,7 @@
 namespace Application;
 class Route
 {
-	public static $route = array();
+	public static $route_get = array();
 
 
 	public function __construct()
@@ -14,13 +14,13 @@ class Route
 
 	public static function get($route, $controller)
 	{
-		self::$route[$route] = $controller;
+		self::$route_get[$route] = $controller;
 
 	}
 
 	public static function getRoute()
 	{
-		return self::$route;
+		return self::$route_get;
 	}
 }
 

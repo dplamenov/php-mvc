@@ -33,8 +33,12 @@ class Application
 
 		self::$route = \Application\FrontControllers::$route;
 
-		self::$routelist = \Application\Route::$route;
-		self::$frontcontroller = \Application\FrontControllers::getInstance(self::$routelist);
+
+		if(strtolower($_SERVER['REQUEST_METHOD']) == 'get'){
+            self::$routelist = \Application\Route::$route_get;
+            self::$frontcontroller = \Application\FrontControllers::getInstance(self::$routelist);
+        }
+
 
 
 	}
