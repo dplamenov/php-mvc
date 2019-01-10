@@ -1,5 +1,6 @@
 # PHP - MVC FRAMEWORK
  - php web framework based on mvc model (model, view, controller)
+ - To install project run composer install
 # How to use
   1. Download and configure your web server to view only "/public" ("/public" must be enrty point of this framework)
   2. MVC Framework has routes <br>
