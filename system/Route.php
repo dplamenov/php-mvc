@@ -3,7 +3,8 @@
 namespace Application;
 class Route
 {
-	public static $route_get = array();
+    private static $route_get = array();
+	private static $route_post = array();
 
 
 	public function __construct()
@@ -18,10 +19,21 @@ class Route
 
 	}
 
-	public static function getRoute()
+	public static function getGetRoute()
 	{
 		return self::$route_get;
 	}
+
+    public static function post($route, $controller)
+    {
+        self::$route_post[$route] = $controller;
+
+    }
+
+    public static function getPostRoute()
+    {
+        return self::$route_post;
+    }
 }
 
 include_once '../config/web/route.php';

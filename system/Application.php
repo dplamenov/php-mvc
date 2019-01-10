@@ -35,7 +35,10 @@ class Application
 
 
         if (strtolower($_SERVER['REQUEST_METHOD']) == 'get') {
-            self::$routelist = \Application\Route::$route_get;
+            self::$routelist = \Application\Route::getGetRoute();
+            self::$frontcontroller = \Application\FrontControllers::getInstance(self::$routelist);
+        } elseif (strtolower($_SERVER['REQUEST_METHOD']) == 'post') {
+            self::$routelist = \Application\Route::getPostRoute();
             self::$frontcontroller = \Application\FrontControllers::getInstance(self::$routelist);
         } else {
             echo 'Method dint exist';

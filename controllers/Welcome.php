@@ -9,4 +9,8 @@ class Welcome
         return Base::View('welcome', ['data' => 'data']);
     }
 
+    public function index2(){
+
+    }
+
 }
