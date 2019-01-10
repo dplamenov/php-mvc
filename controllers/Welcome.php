@@ -2,15 +2,16 @@
 
 use Application\Base;
 
+
 class Welcome
 {
     public function index()
     {
-        return Base::View('welcome', ['data' => 'data']);
+        return Base::View('welcome', []);
     }
 
-    public function index2(){
-
+    public function index2()
+    {
     }
 
 }
