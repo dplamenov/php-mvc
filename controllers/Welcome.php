@@ -12,6 +12,7 @@ class Welcome
 
     public function index2()
     {
+        return 'Post';
     }
 
 }
