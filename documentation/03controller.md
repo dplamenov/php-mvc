@@ -13,3 +13,5 @@ Example<br>
  </code>
 </pre>
 You can view more about view <a href="04view.md">here</a>
+
+<a href="04view.md">Next</a>

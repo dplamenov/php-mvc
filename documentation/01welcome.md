@@ -4,3 +4,6 @@
  - Configure your web server to view only "/public" ("/public" must be entry point of this framework)
  - Framework has <a href="02routes.md">Routes</a>
  
+ 
+ <a href="02routes.md">Next</a>
+ 

@@ -24,3 +24,4 @@ This closure return view with name 'welcome'.
  - To make post route write <code>Route::post('/',"Welcome@index")</code> <br>
  - First param will be url, first part of second param will be controller and second part will be method <br>
  
+ <a href="03controller.md">Next</a>
