@@ -4,29 +4,40 @@ namespace Application;
 class Route
 {
     private static $route_get = array();
-	private static $route_post = array();
+    private static $route_post = array();
 
 
-	public function __construct()
-	{
+    public function __construct()
+    {
 
 
-	}
+    }
 
-	public static function get($route, $controller)
-	{
-		self::$route_get[$route] = $controller;
+    public static function get($route, $controller)
+    {
+        if (is_string($controller)) {
+            self::$route_get[$route] = $controller;
+        } else {
+            echo $controller();
+            exit;
+        }
 
-	}
 
-	public static function getGetRoute()
-	{
-		return self::$route_get;
-	}
+    }
+
+    public static function getGetRoute()
+    {
+        return self::$route_get;
+    }
 
     public static function post($route, $controller)
     {
-        self::$route_post[$route] = $controller;
+        if (is_string($controller)) {
+            self::$route_post[$route] = $controller;
+        } else {
+            echo $controller();
+            exit;
+        }
 
     }
 
