@@ -12,4 +12,4 @@ Example<br>
     return Base::View('welcome', []);
  </code>
 </pre>
-You can view more about view <a href="04view">here</a>
+You can view more about view <a href="04view.md">here</a>
