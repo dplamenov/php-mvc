@@ -4,7 +4,7 @@
 # How to use
   1. Download and configure your web server to view only "/public" ("/public" must be entry point of this framework)
   2. MVC Framework has routes <br>
-    2.1 Routes is 'config/web/routes.php' <br>
+   2.1 Routes is in 'config/web/routes.php' <br>
    2.2 To make route write <code>Route::get('/',"Welcome@index")</code> <br>
      - First param will be url, first part of second param will be controller and second part will be method <br>
      - To return view write <code>return Base::View('Welcome')</code> <br>
