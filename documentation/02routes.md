@@ -5,7 +5,7 @@
 
 <h2>Simple Route</h2>
  - Before create <a href="03controller.md">Controller</a> if you need to use route you can use 
- closure as controller & method Example: <br>
+ closure as controller & method <br>Example: <br><br>
 <pre>
  <code>
     
