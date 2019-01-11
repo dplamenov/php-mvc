@@ -8,11 +8,9 @@
  closure as controller & method <br>Example: <br><br>
 <pre>
  <code>
-    
-    Route::get("/",function (){<br>
-        return \Application\Base::View('welcome');<br>
-    });
-   
+    Route::get("/",function (){
+        return \Application\Base::View('welcome');
+    });   
  </code>
 </pre>
 
