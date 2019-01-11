@@ -2,7 +2,7 @@
  - php web framework based on mvc model (model, view, controller)
  - To install project run composer install
 # How to use
-  1. Download and configure your web server to view only "/public" ("/public" must be enrty point of this framework)
+  1. Download and configure your web server to view only "/public" ("/public" must be entry point of this framework)
   2. MVC Framework has routes <br>
     2.1 Routes is 'config/web/routes.php' <br>
    2.2 To make route write <code>Route::get('/',"Welcome@index")</code> <br>
