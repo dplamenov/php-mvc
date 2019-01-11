@@ -1,4 +1,4 @@
-# Controller
+# Controllers
 - Controllers is php class.
 - Controllers is stored in 'controllers/';
 - Their file name must be a same with class name.
