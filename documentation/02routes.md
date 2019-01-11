@@ -17,7 +17,7 @@
 - This is route by http get method. First param is url. Second param is closure.
 This closure return view with name 'welcome'.
 - For routes with closure isn`t recommend to use serious programming logic (Database Connection, Call Models, etc.).
-- Use closure routes for static page (about us)
+- Use closure routes for static page (about us).
 
 <h2>First Route</h2>
  - To make get route write <code>Route::get('/',"Welcome@index")</code> <br>

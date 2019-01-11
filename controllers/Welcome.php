@@ -2,7 +2,6 @@
 
 use Application\Base;
 
-
 class Welcome
 {
     public function index()
