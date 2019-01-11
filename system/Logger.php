@@ -18,4 +18,8 @@ class Logger
     public function error($msg){
         $this->logger->error($msg);
     }
+
+    public function warning($msg){
+        $this->logger->warning($msg);
+    }
 }
