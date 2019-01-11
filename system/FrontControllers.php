@@ -40,7 +40,7 @@ class FrontControllers
 					include_once '../controllers/' . $controller . '.php';
 					$object = new $controller;
 					if (method_exists($object, $method)) {
-						echo $object->$method();
+						echo $object->$method(new Request());
 					} else {
 						throw new \Exception("<h1 style=\"color: red\">Error: Method didnt exists</h1>");
 					}
