@@ -12,3 +12,5 @@
 
 - Variable with name will be able to get from view with the following syntax <br>
 <pre><code>{{$name}}</code></pre>
+
+<a href="05database.md">Next</a>
