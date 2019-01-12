@@ -13,7 +13,7 @@
 
 - To sent raw query use the following syntax: <br>
 <pre><code>$database->query('ALTER TABLE `users`')</code></pre>
-or normal select query if you want to use your way processing result
+And you can use for normal select query if you want to use your way processing result.
 <pre><code>$database->query('SELECT * FROM `pages`')</code></pre>
 - Don`t use query() method use when you need to use dynamic data. 
 
