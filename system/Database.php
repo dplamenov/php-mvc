@@ -30,7 +30,7 @@ class Database
         }
         return self::$instance;
     }
-    
+
     private static function _init()
     {
         self::$db_host = db_host;
@@ -39,7 +39,7 @@ class Database
         self::$db_name = db_name;
         self::$port = db_port;
 
-        self::$database = mysqli_connect(self::$db_host,);
+        self::$database = mysqli_connect(self::$db_host,self::$db_username,self::$db_password,self::$db_name,self::$port);
     }
 
     public function select(string $sql, $data = array())
