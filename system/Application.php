@@ -13,7 +13,6 @@ class Application
         spl_autoload_register(array("\Application\Application", "load"));
 
         $this->run();
-        include_once '../config/database/database.php';
         include_once '../config/web/route.php';
 
 
