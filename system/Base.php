@@ -15,9 +15,12 @@ class Base
             $template = str_replace('}}', '', $template);
         }
 
-
         return $template;
 
+    }
 
+    public static function redirect($to)
+    {
+        header("Location: " . $_SERVER['REQUEST_URI'] . ltrim($to, '/'));
     }
 }
