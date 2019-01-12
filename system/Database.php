@@ -13,6 +13,8 @@ class Database
     private static $db_name;
     private static $port;
 
+    private static $database;
+
     /**
      * Database constructor.
      */
@@ -28,7 +30,7 @@ class Database
         }
         return self::$instance;
     }
-
+    
     private static function _init()
     {
         self::$db_host = db_host;
@@ -36,9 +38,11 @@ class Database
         self::$db_password = db_password;
         self::$db_name = db_name;
         self::$port = db_port;
+
+        self::$database = mysqli_connect(self::$db_host,);
     }
 
-    public function select()
+    public function select(string $sql, $data = array())
     {
         return self::$db_host;
     }
