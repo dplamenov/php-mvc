@@ -39,20 +39,26 @@ class Database
         self::$db_password = db_password;
         self::$db_name = db_name;
         self::$port = db_port;
+        mysqli_report(MYSQLI_REPORT_STRICT);
+        try{
+            self::$database = new \mysqli(self::$db_host, self::$db_username, self::$db_password, self::$db_name, self::$port);
+        }catch (\Exception $exception){
+            echo '<h1 style="color: red">'.$exception->getMessage().'</h1>';
+            exit;
+        }
 
-        self::$database = new \mysqli(self::$db_host, self::$db_username, self::$db_password, self::$db_name, self::$port);
     }
 
     public function select(string $sql, $data = array())
     {
         if (count($data) == 0) {
-            $r = mysqli_query(self::$database, $sql);
-            if ($r->num_rows > 1) {
-                for ($counter = 1; $counter <= $r->num_rows; $counter++) {
-                    $result[$counter] = $r->fetch_object();
+            $raw_result = mysqli_query(self::$database, $sql);
+            if ($raw_result->num_rows > 1) {
+                for ($counter = 1; $counter <= $raw_result->num_rows; $counter++) {
+                    $result[$counter] = $raw_result->fetch_object();
                 }
-            } elseif ($r->num_rows == 1) {
-                $result[0] = $r->fetch_object();
+            } elseif ($raw_result->num_rows == 1) {
+                $result[0] = $raw_result->fetch_object();
             }
         } else {
 
@@ -71,13 +77,13 @@ class Database
             }
             $sql = str_replace('?', '', $sql);
             echo $sql;
-            $r = mysqli_query(self::$database, $sql);
-            if ($r->num_rows > 1) {
-                for ($counter = 1; $counter <= $r->num_rows; $counter++) {
-                    $result[$counter] = $r->fetch_object();
+            $raw_result = mysqli_query(self::$database, $sql);
+            if ($raw_result->num_rows > 1) {
+                for ($counter = 1; $counter <= $raw_result->num_rows; $counter++) {
+                    $result[$counter] = $raw_result->fetch_object();
                 }
-            } elseif ($r->num_rows == 1) {
-                $result[0] = $r->fetch_object();
+            } elseif ($raw_result->num_rows == 1) {
+                $result[0] = $raw_result->fetch_object();
             }
 
         }
