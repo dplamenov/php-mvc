@@ -54,6 +54,7 @@ class Database
     public function query(string $sql)
     {
         $r = mysqli_query(self::$database, $sql);
+        return $r;
     }
 
     public function select(string $sql, $data = array())
