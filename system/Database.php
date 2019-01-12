@@ -2,9 +2,6 @@
 
 namespace Application;
 
-
-use function PHPSTORM_META\type;
-
 class Database
 {
     private static $instance = null;
@@ -23,6 +20,7 @@ class Database
     private function __construct()
     {
         self::_init();
+        self::setCharset('utf8');
     }
 
     public static function init()
@@ -48,6 +46,7 @@ class Database
             echo '<h1 style="color: red">' . $exception->getMessage() . '</h1>';
             exit;
         }
+
 
     }
 
@@ -98,5 +97,10 @@ class Database
 
         }
         return $result;
+    }
+
+    public function setCharset($charset)
+    {
+        mysqli_set_charset(self::$database, $charset);
     }
 }
