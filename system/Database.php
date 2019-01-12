@@ -3,6 +3,8 @@
 namespace Application;
 
 
+use function PHPSTORM_META\type;
+
 class Database
 {
     private static $instance = null;
@@ -51,7 +53,7 @@ class Database
 
     public function query(string $sql)
     {
-        $r = mysqli_query(self::$database,$sql);
+        $r = mysqli_query(self::$database, $sql);
     }
 
     public function select(string $sql, $data = array())
@@ -70,18 +72,18 @@ class Database
             $count = substr_count($sql, '?');
             $counter = 0;
             while ($count != 0) {
+                echo '<pre>' . print_r($data, true) . '</pre>';
                 if (is_string($data[$counter])) {
-                    $sql = substr_replace($sql, "'$data[$counter]'", strpos($sql, '?', strpos($sql, '?') + $counter), 0);
+                    $escape_data = mysqli_real_escape_string(self::$database, $data[$counter]);
+                    $sql = substr_replace($sql, "'$escape_data'", strpos($sql, '?', strpos($sql, '?') + $counter), 0);
                 } else {
-                    $sql = substr_replace($sql, $data[$counter], strpos($sql, '?', strpos($sql, '?') + $counter), 0);
+                    $escape_data = mysqli_real_escape_string(self::$database, $data[$counter]);
+                    $sql = substr_replace($sql, $escape_data, strpos($data[$counter], '?', strpos($sql, '?') + $counter), 0);
                 }
-
-
                 $counter++;
                 $count--;
             }
             $sql = str_replace('?', '', $sql);
-            echo $sql;
             $raw_result = mysqli_query(self::$database, $sql);
             if ($raw_result->num_rows > 1) {
                 for ($counter = 1; $counter <= $raw_result->num_rows; $counter++) {
@@ -89,6 +91,8 @@ class Database
                 }
             } elseif ($raw_result->num_rows == 1) {
                 $result[0] = $raw_result->fetch_object();
+            } else {
+                $result = 'No data';
             }
 
         }
