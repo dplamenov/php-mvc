@@ -30,18 +30,22 @@ or normal select query if you want to use your way processing result
 - Example Real Controller<br>
 <pre>
     <code>
-        use Application\Base
-        class User
-        {
-            public function showProfilePage()
-            {
-                $database = \Application\Database::init();
-                $user = $database->select('SELECT * FROM `users` WHERE `user_id` = ? and `is_active` = ?', ['2', '1']);
-                return Base::View('user_profile', ['user' => $user]);       
-            }        
-        }
+use Application\Base
+class User
+{
+    public function showProfilePage()
+    {
+     $database = \Application\Database::init();
+     $user = $database->select('SELECT * FROM `users` WHERE `user_id` = ? and `is_active` = ?', ['2', '1']);
+     return Base::View('user_profile', ['user' => $user]);       
+    }        
+}
     </code>
 </pre>
 - SQL in upper example will be "SELECT * FROM \`users\` WHERE \`user_id\` = 2 and \`is_active\` = 1"
+
+<h2>Set Charset</h2>
+- By Default framework will set charset utf8 you change charset with setCharset method of database object
+
 
 <a href="06logger.md">Next</a>
