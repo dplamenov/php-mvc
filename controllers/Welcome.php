@@ -1,7 +1,6 @@
 <?php
 
 use Application\Base;
-use Application\Database;
 
 class Welcome
 {

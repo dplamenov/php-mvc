@@ -18,10 +18,10 @@ class Database
      */
     private function __construct()
     {
-        self::init();
+        self::_init();
     }
 
-    public static function getInstance()
+    public static function init()
     {
         if (self::$instance == null) {
             self::$instance = new self();
@@ -29,7 +29,7 @@ class Database
         return self::$instance;
     }
 
-    private static function init()
+    private static function _init()
     {
         self::$db_host = db_host;
         self::$db_username = db_username;
