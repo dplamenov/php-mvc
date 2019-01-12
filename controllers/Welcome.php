@@ -4,15 +4,12 @@ use Application\Base;
 
 class Welcome
 {
-    public function index()
+    public function showForm()
     {
-        $log = new \Application\Logger();
         return Base::View('welcome', []);
-
-
     }
 
-    public function index2()
+    public function storeData()
     {
         return 'Post';
     }

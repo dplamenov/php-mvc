@@ -14,4 +14,25 @@ Example<br>
 </pre>
 You can view more about view <a href="04view.md">here</a>
 
+- Example Controller : <br>
+<pre>
+    <code>
+    use Application\Base;
+    
+    class Welcome
+    {
+        public function showForm()
+        {
+            return Base::View('welcome', []);
+        }
+    
+        public function storeData()
+        {
+            return 'Post';
+        }
+            
+    }
+    </code>
+</pre>
+
 <a href="04view.md">Next</a>
