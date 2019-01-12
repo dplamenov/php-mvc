@@ -7,3 +7,29 @@
 <pre><code>$database = Database::init();</code></pre>
 
 - $database is hold object of type Database
+
+<h2>Select Query</h2>
+- Use Select Method <br> Example <br>
+<pre><code>$database = Database::init();<br>$pages = $database->select('SELECT * FROM `pages`');</code></pre>
+- $pages value will be array of stdObject.
+
+- If you need to use dynamic parameters use the following syntax: <br>
+<pre><code>$pages = $database->select('SELECT * FROM `pages` WHERE `page_id` = ?', [$_GET['id']);</code></pre>
+
+- The first argument passed to the select method is the raw SQL query with placeholder(?), while the second argument is any parameter bindings that need to be bound to the query. Parameter binding provides protection against SQL injection. 
+
+- Example Real Controller<br>
+<pre>
+    <code>
+        use Application\Base
+        class User
+        {
+            public function showProfilePage()
+            {
+                $database = \Application\Database::init();
+                $user = $database->select('SELECT * FROM `users` WHERE `user_id` = ? and `is_active` = ?', ['2', '1']);
+                return Base::View('user_profile', ['user' => $user]);       
+            }        
+        }
+    </code>
+</pre>

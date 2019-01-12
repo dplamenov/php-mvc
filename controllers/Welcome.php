@@ -6,6 +6,7 @@ class Welcome
 {
     public function showForm()
     {
+        $database = \Application\Database::init();
         return Base::View('welcome');
 
 
