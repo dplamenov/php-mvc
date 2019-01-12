@@ -23,6 +23,9 @@ class Database
         self::setCharset('utf8');
     }
 
+    /**
+     * @return Database|null
+     */
     public static function init()
     {
         if (self::$instance == null) {
@@ -50,13 +53,22 @@ class Database
 
     }
 
+    /**
+     * @param string $sql
+     * @return bool|\mysqli_result
+     */
     public function query(string $sql)
     {
         $r = mysqli_query(self::$database, $sql);
         return $r;
     }
 
-    public function select(string $sql, $data = array())
+    /**
+     * @param string $sql
+     * @param array $data
+     * @return mixed
+     */
+    public function select(string $sql, array $data = array())
     {
         if (count($data) == 0) {
             $raw_result = mysqli_query(self::$database, $sql);
