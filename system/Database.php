@@ -40,13 +40,18 @@ class Database
         self::$db_name = db_name;
         self::$port = db_port;
         mysqli_report(MYSQLI_REPORT_STRICT);
-        try{
+        try {
             self::$database = new \mysqli(self::$db_host, self::$db_username, self::$db_password, self::$db_name, self::$port);
-        }catch (\Exception $exception){
-            echo '<h1 style="color: red">'.$exception->getMessage().'</h1>';
+        } catch (\Exception $exception) {
+            echo '<h1 style="color: red">' . $exception->getMessage() . '</h1>';
             exit;
         }
 
+    }
+
+    public function query(string $sql)
+    {
+        $r = mysqli_query(self::$database,$sql);
     }
 
     public function select(string $sql, $data = array())

@@ -22,4 +22,5 @@ class Logger
     public function warning($msg){
         $this->logger->warning($msg);
     }
+
 }

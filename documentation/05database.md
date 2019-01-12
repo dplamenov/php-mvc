@@ -9,6 +9,15 @@
 - $database is hold object of type Database
 
 <h2>Select Query</h2>
+<h4>Raw query</h4>
+
+- To sent raw query use the following syntax: <br>
+<pre><code>$database->query('ALTER TABLE `users`')</code></pre>
+or normal select query if you want to use your way processing result
+<pre><code>$database->query('SELECT * FROM `pages`')</code></pre>
+- Don`t use query() method use when you need to use dynamic data. 
+
+<h4>Select Method</h4>
 - Use Select Method <br> Example <br>
 <pre><code>$database = Database::init();<br>$pages = $database->select('SELECT * FROM `pages`');</code></pre>
 - $pages value will be array of stdObject.
