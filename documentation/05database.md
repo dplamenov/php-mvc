@@ -33,4 +33,4 @@
         }
     </code>
 </pre>
-- SQL in upper example will be 'SELECT * FROM \`users\` WHERE \`user_id\` = 2 and \`is_active\` = 1'
+- SQL in upper example will be "SELECT * FROM \`users\` WHERE \`user_id\` = 2 and \`is_active\` = 1"
