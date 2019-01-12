@@ -6,8 +6,6 @@ class Welcome
 {
     public function showForm()
     {
-       
-        $log = new \Application\Logger();
         return Base::View('welcome');
     }
 
