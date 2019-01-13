@@ -46,7 +46,8 @@ class User
 
 <h2>Insert</h2>
 - Use inset method <br> Example <br>
-<pre><code>$database = Database::init();<br>$pages = $database->insert('INSERT INTO users (`username`, `password`, `email`) VALUES (?, ?, ?)' , ['user', 'pass', 'email']);</code></pre>
+<pre><code>$database = Database::init();
+$pages = $database->insert('INSERT INTO users (`username`, `password`, `email`) VALUES (?, ?, ?)' , ['user', 'pass', 'email']);</code></pre>
 
 <h2>Set Charset</h2>
 - By Default framework will set charset `utf8` you change charset with setCharset method of database object
