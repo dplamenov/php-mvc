@@ -48,6 +48,7 @@ class User
 - Use insert method <br> Example <br>
 <pre><code>$database = Database::init();
 $pages = $database->insert('INSERT INTO users (`username`, `password`, `email`) VALUES (?, ?, ?)' , ['user', 'pass', 'email']);</code></pre>
+- Insert method always will return bool(true) if query is successful and will return bool(false) if query has error.
 
 <h2>Set Charset</h2>
 - By Default framework will set charset `utf8` you change charset with setCharset method of database object

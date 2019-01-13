@@ -84,8 +84,7 @@ class Database
             $count = substr_count($sql, '?');
             $counter = 0;
             while ($count != 0) {
-                echo '<pre>' . print_r($data, true) . '</pre>';
-                if (is_string($data[$counter])) {
+               if (is_string($data[$counter])) {
                     $escape_data = mysqli_real_escape_string(self::$database, $data[$counter]);
                     $sql = substr_replace($sql, "'$escape_data'", strpos($sql, '?', strpos($sql, '?') + $counter), 0);
                 } else {
@@ -110,12 +109,27 @@ class Database
         }
         return $result;
     }
-    
-    public function insert(string $sql, array $data = array())
+
+    public function insert(string $sql, array $data)
     {
-        
+        $count = substr_count($sql, '?');
+        $counter = 0;
+        while ($count != 0) {
+            if (is_string($data[$counter])) {
+                $escape_data = mysqli_real_escape_string(self::$database, $data[$counter]);
+                $sql = substr_replace($sql, "'$escape_data'", strpos($sql, '?', strpos($sql, '?') + $counter), 0);
+            } else {
+                $escape_data = mysqli_real_escape_string(self::$database, $data[$counter]);
+                $sql = substr_replace($sql, $escape_data, strpos($data[$counter], '?', strpos($sql, '?') + $counter), 0);
+            }
+            $counter++;
+            $count--;
+        }
+        $sql = str_replace('?', '', $sql);
+        $raw_result = mysqli_query(self::$database, $sql);
+        return $raw_result;
     }
-    
+
     public function setCharset($charset)
     {
         mysqli_set_charset(self::$database, $charset);
