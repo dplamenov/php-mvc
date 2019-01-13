@@ -11,7 +11,6 @@ class Database
     private static $db_password;
     private static $db_name;
     private static $port;
-
     private static $database;
 
     /**
@@ -84,7 +83,7 @@ class Database
             $count = substr_count($sql, '?');
             $counter = 0;
             while ($count != 0) {
-               if (is_string($data[$counter])) {
+                if (is_string($data[$counter])) {
                     $escape_data = mysqli_real_escape_string(self::$database, $data[$counter]);
                     $sql = substr_replace($sql, "'$escape_data'", strpos($sql, '?', strpos($sql, '?') + $counter), 0);
                 } else {
