@@ -1,6 +1,6 @@
 # Controllers
 - Controllers is php class.
-- Controllers is stored in 'controllers/';
+- Controllers is stored in `controllers/`;
 - Their file name must be a same with class name.
 - Part of MVC.
 - After created controller you can created method.
