@@ -3,7 +3,7 @@
 namespace Application;
 
 
-class FrontControllers
+class FrontControllers extends Request
 {
     public static $route;
     public static $routes;
