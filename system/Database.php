@@ -110,7 +110,12 @@ class Database
         }
         return $result;
     }
-
+    
+    public function insert(string $sql, array $data = array())
+    {
+        
+    }
+    
     public function setCharset($charset)
     {
         mysqli_set_charset(self::$database, $charset);
