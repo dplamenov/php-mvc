@@ -1,5 +1,5 @@
 # Database
-- Database config file is 'config/database/database.php';
+- Database config file is `config/database/database.php`;
 - To get database instance use the following syntax: <br>
 <pre><code>$database = \Application\Database::init();</code></pre>
 
@@ -45,7 +45,7 @@ class User
 - SQL in upper example will be "SELECT * FROM \`users\` WHERE \`user_id\` = 2 and \`is_active\` = 1"
 
 <h2>Set Charset</h2>
-- By Default framework will set charset utf8 you change charset with setCharset method of database object
+- By Default framework will set charset `utf8` you change charset with setCharset method of database object
 
 
 <a href="06logger.md">Next</a>
