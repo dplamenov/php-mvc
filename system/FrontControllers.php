@@ -28,10 +28,11 @@ class FrontControllers extends Request
 
         foreach (self::$routes as $route => $controller) {
             self::$routes[$route] = $controller;
-            $route_new = str_replace("/", "", $route);
+            $route_new = ltrim($route, '/');
 
 
             if (self::$route == $route_new) {
+
                 if ($controller instanceof \Closure) {
                     echo $controller();
                     $i++;
@@ -54,6 +55,28 @@ class FrontControllers extends Request
                     }
                 }
 
+            } elseif (substr($route_new, 0, strlen('{')) == '{') {
+                $route_new = ltrim(rtrim($route_new, '}'), '{');
+                $_GET[$route_new] = self::$route;
+
+                unset($_GET['url']);
+                $method = explode("@", $controller)[1];
+                $controller = explode("@", $controller)[0];
+                include_once '../controllers/' . $controller . '.php';
+                $object = new $controller;
+                if (method_exists($object, $method)) {
+                    echo $object->$method(new Request());
+                } else {
+                    throw new \Exception("<h1 style=\"color: red\">Error: Method didnt exists</h1>");
+                }
+
+
+                $i++;
+
+            }
+
+            if ($i != 0) {
+                break;
             }
 
 
@@ -61,6 +84,7 @@ class FrontControllers extends Request
         if (self::$route == "") {
             self::$route = "/";
         }
+
         if ($i == 0) {
             $uri = $_SERVER['REQUEST_URI'];
             $route = str_replace("index.php", "", $_SERVER['SCRIPT_NAME']);
