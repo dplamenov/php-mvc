@@ -1,7 +1,7 @@
 # Routes
 - Routes is in 'config/web/routes.php' <br>
 - Framework make difference between http method get and post
-- Don`t delete <code>use Application\Route;</code> in 'config/web/routes.php' file
+- Don\`t delete <code>use Application\Route;</code> in `config/web/routes.php` file
 
 <h2>Simple Route</h2>
  - Before create <a href="03controller.md">Controller</a> if you need to use route you can use 
