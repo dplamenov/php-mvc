@@ -1,8 +1,8 @@
 # Views
-- Views is stored in 'views/';
+- Views is stored in `views/`;
 - Part of MVC. 
-- File Extension of view must be '.php'. 
-- To call view in controller use 'return' statement.
+- File Extension of view must be `.php`. 
+- To call view in controller use `return` statement.
 - Call view in controller <br> Example <br>
 <pre><code>return Base::View('welcome');</code></pre>
 
