@@ -130,6 +130,32 @@ class Database
         return $raw_result;
     }
 
+    public function delete(string $sql, array $data = array())
+    {
+        if (count($data) == 0) {
+            $result = mysqli_query(self::$database, $sql);
+        } else {
+
+            $count = substr_count($sql, '?');
+            $counter = 0;
+            while ($count != 0) {
+                if (is_string($data[$counter])) {
+                    $escape_data = mysqli_real_escape_string(self::$database, $data[$counter]);
+                    $sql = substr_replace($sql, "'$escape_data'", strpos($sql, '?', strpos($sql, '?') + $counter), 0);
+                } else {
+                    $escape_data = mysqli_real_escape_string(self::$database, $data[$counter]);
+                    $sql = substr_replace($sql, $escape_data, strpos($data[$counter], '?', strpos($sql, '?') + $counter), 0);
+                }
+                $counter++;
+                $count--;
+            }
+            $sql = str_replace('?', '', $sql);
+            $result = mysqli_query(self::$database, $sql);
+
+        }
+        return $result;
+    }
+
     public function setCharset($charset)
     {
         mysqli_set_charset(self::$database, $charset);
