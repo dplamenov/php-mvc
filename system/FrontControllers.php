@@ -60,12 +60,7 @@ class FrontControllers extends Request
                 $route_new = str_replace('}', '', $route_new);
                 if (substr_count($route_new, '/') == substr_count(self::$route, '/')) {
 
-
                     $_GET[$route_new] = self::$route;
-                    echo $route_new;
-                    echo '<br>';
-                    echo self::$route;
-
                     unset($_GET['url']);
                     $method = explode("@", $controller)[1];
                     $controller = explode("@", $controller)[0];
