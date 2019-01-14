@@ -28,7 +28,7 @@ This closure return view with name 'welcome'.
 
 - Example: <pre><code>Route::get("/{id}", 'Welcome@showForm');</code></pre>
 
-- To key this value in example use `id ` key.
+- To key this value in example use `id` key.
 
 - To get this value use \Application\Request class get method.
 <br>
