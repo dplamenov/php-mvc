@@ -69,6 +69,7 @@ class Database
      */
     public function select(string $sql, array $data = array())
     {
+        $result = array();
         if (count($data) == 0) {
             $raw_result = mysqli_query(self::$database, $sql);
             if ($raw_result->num_rows > 1) {

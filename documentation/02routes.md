@@ -24,4 +24,10 @@ This closure return view with name 'welcome'.
  - To make post route write <code>Route::post('/',"Welcome@index")</code> <br>
  - First param will be url, first part of second param will be controller and second part will be method <br>
  
+<h2>Dynamic Route</h2>
+- Example: <pre><code>Route::get("/{id}", 'Welcome@showForm');</code></pre>
+- To key this value in example use `id ` key.
+
+- To get this value use \Application\Request class get method.
+<br>
  <a href="03controller.md">Next</a>
