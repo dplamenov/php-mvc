@@ -56,22 +56,29 @@ class FrontControllers extends Request
                 }
 
             } elseif (substr($route_new, 0, strlen('{')) == '{') {
-                $route_new = ltrim(rtrim($route_new, '}'), '{');
-                $_GET[$route_new] = self::$route;
+                $route_new = str_replace('{', '', $route_new);
+                $route_new = str_replace('}', '', $route_new);
+                if (substr_count($route_new, '/') == substr_count(self::$route, '/')) {
 
-                unset($_GET['url']);
-                $method = explode("@", $controller)[1];
-                $controller = explode("@", $controller)[0];
-                include_once '../controllers/' . $controller . '.php';
-                $object = new $controller;
-                if (method_exists($object, $method)) {
-                    echo $object->$method(new Request());
-                } else {
-                    throw new \Exception("<h1 style=\"color: red\">Error: Method didnt exists</h1>");
+
+                    $_GET[$route_new] = self::$route;
+                    echo $route_new;
+                    echo '<br>';
+                    echo self::$route;
+
+                    unset($_GET['url']);
+                    $method = explode("@", $controller)[1];
+                    $controller = explode("@", $controller)[0];
+                    include_once '../controllers/' . $controller . '.php';
+                    $object = new $controller;
+                    if (method_exists($object, $method)) {
+                        echo $object->$method(new Request());
+                    } else {
+                        throw new \Exception("<h1 style=\"color: red\">Error: Method didnt exists</h1>");
+                    }
+                    $i++;
                 }
 
-
-                $i++;
 
             }
 
