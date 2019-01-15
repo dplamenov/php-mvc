@@ -58,7 +58,10 @@ class FrontControllers extends Request
             } elseif (substr($route_new, 0, strlen('{')) == '{') {
                 $route_new = str_replace('{', '', $route_new);
                 $route_new = str_replace('}', '', $route_new);
-                if (substr_count($route_new, '/') == substr_count(self::$route, '/')) {
+                if ($controller instanceof \Closure) {
+                    echo $controller();
+                    $i++;
+                } elseif (substr_count($route_new, '/') == substr_count(self::$route, '/')) {
                     $_GET[$route_new] = self::$route;
                     unset($_GET['url']);
                     $method = explode("@", $controller)[1];
@@ -92,7 +95,7 @@ class FrontControllers extends Request
             $route = str_replace($route, "", $uri);
             echo '<h1 style="color: red">Error: Route "' . $route . '" is not declared in route file. Method: ' . $_SERVER['REQUEST_METHOD'] . '</h1>';
         }
-        
+
         return 0;
 
 
