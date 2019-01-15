@@ -10,7 +10,6 @@ class FrontControllers extends Request
 
     private function __construct()
     {
-        parent::__construct();
     }
 
     public static function getInstance($routelist)

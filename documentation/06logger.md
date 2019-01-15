@@ -10,6 +10,8 @@ List of methods
 <ol>
 <li>error($msg)</li>
 <li>warning($msg)</li>
+<li>addCritical($msg)</li>
+<li>alert($msg)
 </ol>
 - You can use them so:
 

@@ -2,8 +2,8 @@
 
 namespace Application;
 
-use Monolog\Logger as log;
 use Monolog\Handler\StreamHandler;
+use Monolog\Logger as log;
 
 
 class Logger
@@ -24,6 +24,16 @@ class Logger
 
     public function warning($msg){
         $this->logger->warning($msg);
+    }
+
+    public function addCritical($msg)
+    {
+        $this->logger->addCritical($msg);
+    }
+
+    public function alert($msg)
+    {
+        $this->logger->alert($msg);
     }
 
 }
