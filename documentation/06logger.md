@@ -1,6 +1,7 @@
 # Logger
 
 - Framework use Monolog as library for logging.
+- To work correct set true timezome.
 - Log file is in home directory in and file name is log.log. You can change them from `config/logger.php` file.
 - Example <br>
 in your controller write:
