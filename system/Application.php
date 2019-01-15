@@ -13,6 +13,9 @@ class Application
         spl_autoload_register(array("\Application\Application", "load"));
 
         $this->run();
+        include_once "../config/config.php";
+        date_default_timezone_set(timezone);
+
         include_once '../config/web/route.php';
 
 

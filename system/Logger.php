@@ -12,6 +12,7 @@ class Logger
     public function __construct()
     {
         include "../config/logger.php";
+
         $log_file = '../'.logfile;
         $loggger = new log('log');
 
@@ -35,5 +36,6 @@ class Logger
     {
         $this->logger->alert($msg);
     }
+
 
 }

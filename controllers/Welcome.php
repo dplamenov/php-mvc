@@ -8,6 +8,7 @@ class Welcome
     {
 
         return Base::View('welcome');
+
     }
 
     public function storeData()
