@@ -6,7 +6,6 @@ class Welcome
 {
     public function showForm(\Application\Request $request)
     {
-
         return Base::View('welcome');
 
     }

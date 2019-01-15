@@ -92,8 +92,7 @@ class FrontControllers extends Request
             $route = str_replace($route, "", $uri);
             echo '<h1 style="color: red">Error: Route "' . $route . '" is not declared in route file. Method: ' . $_SERVER['REQUEST_METHOD'] . '</h1>';
         }
-
-
+        
         return 0;
 
 
