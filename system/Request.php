@@ -9,4 +9,9 @@ class Request
     {
         return (object)$_GET;
     }
+
+    public function post()
+    {
+        return (object)$_POST;
+    }
 }
