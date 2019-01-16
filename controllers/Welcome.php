@@ -10,6 +10,7 @@ class Welcome extends Controller
 
         return Base::View('welcome');
 
+
     }
 
     public function storeData(\Application\Request $request)

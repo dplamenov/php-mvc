@@ -2,6 +2,6 @@
 
 use Application\Route;
 
-Route::get("/",'Welcome@showForm');
+Route::get("/", 'Welcome@showForm');
 Route::get("/{id}", 'Welcome@showForm');
-Route::post('/',"Welcome@storeData");
+Route::post('/', "Welcome@storeData");
