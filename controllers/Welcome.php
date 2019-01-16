@@ -7,14 +7,18 @@ class Welcome extends Controller
 {
     public function showForm(\Application\Request $request)
     {
-        $this->validate();
+
         return Base::View('welcome');
 
     }
 
-    public function storeData()
+    public function storeData(\Application\Request $request)
     {
-        return 'Post';
+
+        $this->validate($request, [
+            'name' => 'min:5',
+            'ms' => 'max:2'
+        ]);
     }
 
 }
