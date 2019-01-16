@@ -22,10 +22,10 @@ trait Validate
             $data[$key]['rules'] = $validate_rules[$key];
         }
         foreach ($data as $k => $datum) {
-                $rules = explode('|', $datum['rules']);
-                $data[$k]['rules'] = $rules;
+            $rules = explode('|', $datum['rules']);
+            $data[$k]['rules'] = $rules;
         }
-        echo '<pre>' . print_r($data, true) . '</pre>';
+
 
     }
 }
