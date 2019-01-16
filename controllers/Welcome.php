@@ -2,7 +2,7 @@
 
 use Application\Base;
 
-class Welcome
+class Welcome extends Controller
 {
     public function showForm(\Application\Request $request)
     {

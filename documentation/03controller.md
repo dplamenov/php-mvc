@@ -3,6 +3,7 @@
 - Controllers is stored in `controllers/`;
 - Their file name must be a same with class name.
 - Part of MVC.
+- Controller must be extends base controller.
 - After created controller you can created method.
 - To output anythings use only return.
 - Render view in method<br>
@@ -19,7 +20,7 @@ You can view more about view <a href="04view.md">here</a>
     <code>
     use Application\Base;
     
-    class Welcome
+    class Welcome extends Controller
     {
         public function showForm()
         {
