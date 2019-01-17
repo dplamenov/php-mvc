@@ -34,6 +34,6 @@ trait Validate
                 return $element;
             }, $rules);
         }
-        
+
     }
 }
