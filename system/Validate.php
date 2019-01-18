@@ -17,7 +17,6 @@ trait Validate
                 unset($validate_rules[$name]);
             }
         }
-        echo '<pre>' . print_r($request, true) . '</pre>';
         foreach ($request_ as $key => $value) {
             $data[$key]['value'] = $value;
             $data[$key]['rules'] = $validate_rules[$key];
@@ -35,5 +34,27 @@ trait Validate
             }, $rules);
         }
 
+        $data = array_values($data);
+
+        for ($i = 0; $i <= count($data) - 1; $i++) {
+            $value = $data[$i]['value'];
+        
+        }
+
+        echo '<pre>' . print_r($data, true) . '</pre>';
+
+
     }
+
+    private function min($value, $n)
+    {
+
+    }
+
+    private function max($value, $n)
+    {
+
+    }
+
+
 }
