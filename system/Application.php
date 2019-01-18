@@ -10,11 +10,11 @@ class Application
 
     private function __construct()
     {
-
+        session_start();
         spl_autoload_register(array("\Application\Application", "load"));
         include '../controllers/Controller.php';
         $this->run();
-        session_start();
+
         include_once "../config/config.php";
 
         date_default_timezone_set(timezone);

@@ -3,8 +3,9 @@
 namespace Application;
 
 
-class Request extends Session
+class Request
 {
+
     public function get()
     {
         return (object)$_GET;
@@ -17,7 +18,7 @@ class Request extends Session
 
     public function session()
     {
-        return new Session();
+        return Session::init();
     }
 
 
