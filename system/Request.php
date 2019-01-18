@@ -3,7 +3,7 @@
 namespace Application;
 
 
-class Request
+class Request extends Session
 {
     public function get()
     {
