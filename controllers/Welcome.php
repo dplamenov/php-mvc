@@ -15,7 +15,6 @@ class Welcome extends Controller
         $this->validate($request, [
             'name' => 'min:5|max:8',
         ]);
-
     }
 
 }
