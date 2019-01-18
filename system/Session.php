@@ -6,13 +6,13 @@ namespace Application;
 
 class Session
 {
-    public function put()
+    public function put($key, $value)
     {
-
+        $_SESSION[$key] = $value;
     }
 
-    public function get()
+    public function get($key)
     {
-
+        return $_SESSION[$key];
     }
 }
