@@ -5,7 +5,7 @@ namespace Application;
 
 trait Validate
 {
-    public function validate(Request $request, array $validate_rules)
+    final public function validate(Request $request, array $validate_rules)
     {
         $request = $request->post();
         $request_ = array();

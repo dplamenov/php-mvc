@@ -5,6 +5,7 @@ use controller\Controller;
 
 class Welcome extends Controller
 {
+
     public function showForm(\Application\Request $request)
     {
         $request->session()->put('num', $request->session()->get('num') + 1);
