@@ -15,5 +15,10 @@ class Request
         return (object)$_POST;
     }
 
+    public function session()
+    {
+        return new Session();
+    }
+
 
 }
