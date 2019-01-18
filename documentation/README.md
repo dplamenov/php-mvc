@@ -5,3 +5,4 @@
 4. <a href="04view.md">Views</a>
 5. <a href="05database.md">Database</a>
 6. <a href="06logger.md">Logger</a>
+7. <a href="07session.md">Session</a>
