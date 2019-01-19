@@ -41,7 +41,6 @@ trait Validate
             $result[$i] = $this->check($value, $data[$i]['rules']);
 
         }
-        echo '<pre>' . print_r($result, true) . '</pre>';
         foreach ($result as $key => $value) {
             foreach ($result[$key] as $item) {
                 $validation = 0;
