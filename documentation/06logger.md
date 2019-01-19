@@ -17,3 +17,5 @@ List of methods
 - You can use them so:
 
 <pre><code>$log->error('Some error');</code></pre>
+
+<a href="07session.md">Next</a>
