@@ -24,15 +24,20 @@ class Session
         }
         return self::$instance;
     }
+
     public function put($key, $value)
     {
         global $_SESSION;
         $_SESSION[$key] = $value;
     }
 
-    public function get($key)
+    public function get($key, $default_value = null)
     {
         global $_SESSION;
-        return $_SESSION[$key];
+        if (isset($_SESSION[$key])) {
+            return $_SESSION[$key];
+        }
+        return $default_value;
+
     }
 }
