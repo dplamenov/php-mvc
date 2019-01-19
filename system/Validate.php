@@ -55,7 +55,8 @@ trait Validate
         } else {
             $validation = false;
         }
-        return $validation;
+        $v = new Validation($validation, $data, $request);
+        return $v;
     }
 
     private function same($arr)
