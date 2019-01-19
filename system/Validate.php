@@ -38,27 +38,40 @@ trait Validate
         $validation = array();
         for ($i = 0; $i <= count($data) - 1; $i++) {
             $value = $data[$i]['value'];
-            $result = $this->check($value, $data[$i]['rules']);
-            echo '<pre>' . print_r($result, true) . '</pre>';
-            $validation[$i] = $this->isUnique($result);
+            $result[$i] = $this->check($value, $data[$i]['rules']);
 
         }
 
+        foreach ($result as $key => $value) {
+            foreach ($result[$key] as $item) {
+                $validation = 0;
 
+                if ($this->isUnique($result[$key], 1)) {
+                    $validation = 1;
+                }
+            }
+        }
+
+        if ($validation == 1) {
+            $validation = true;
+        } else {
+            $validation = false;
+        }
         return $validation;
     }
 
-    private function isUnique($arr)
+    private function isUnique($arr, $v)
     {
         $firstValue = current($arr);
         foreach ($arr as $val) {
-            if ($firstValue != $val and $firstValue != 1) {
+            if ($firstValue != $val and $firstValue != $v) {
                 return 0;
             }
         }
         return 1;
 
     }
+
 
     private function check($value, $rules)
     {
