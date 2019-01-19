@@ -19,7 +19,7 @@ class Welcome extends Controller
             'name' => 'min:2|max:8',
         ]);
 
-        echo '<pre>' . print_r($validation, true) . '</pre>';
+        var_dump($validation);
     }
 
 }

@@ -45,8 +45,7 @@ trait Validate
         foreach ($result as $key => $value) {
             foreach ($result[$key] as $item) {
                 $validation = 0;
-
-                if ($this->isUnique($result[$key], 1)) {
+                if ($this->same($result[$key])) {
                     $validation = 1;
                 }
             }
@@ -60,16 +59,16 @@ trait Validate
         return $validation;
     }
 
-    private function isUnique($arr, $v)
+    private function same($arr)
     {
-        $firstValue = current($arr);
-        foreach ($arr as $val) {
-            if ($firstValue != $val and $firstValue != $v) {
-                return 0;
-            }
+        $sum = 0;
+        foreach ($arr as $ar) {
+            $sum += $ar;
         }
-        return 1;
 
+        if ($sum == count($arr)) {
+            return true;
+        }
     }
 
 
@@ -77,9 +76,18 @@ trait Validate
     {
         foreach ($rules as $rule) {
             if ($rule[0] == 'min') {
-                $result[] = $this->min($value, $rule[1]);
+                if ($this->min($value, $rule[1]) == true) {
+                    $result[] = $this->min($value, $rule[1]);
+                } else {
+                    $result[] = 0;
+                }
+
             } elseif ($rule[0] == 'max') {
-                $result[] = $this->max($value, $rule[1]);
+                if ($this->max($value, $rule[1]) == true) {
+                    $result[] = $this->max($value, $rule[1]);
+                } else {
+                    $result[] = 0;
+                }
             }
         }
         return $result;
@@ -87,12 +95,12 @@ trait Validate
 
     private function min($value, $n)
     {
-        return (mb_strlen($value) > $n);
+        return (mb_strlen($value) >= $n);
     }
 
     private function max($value, $n)
     {
-        return (mb_strlen($value) < $n);
+        return (mb_strlen($value) <= $n);
     }
 
 
