@@ -35,25 +35,51 @@ trait Validate
         }
 
         $data = array_values($data);
-
+        $validation = array();
         for ($i = 0; $i <= count($data) - 1; $i++) {
             $value = $data[$i]['value'];
-        
+            $result = $this->check($value, $data[$i]['rules']);
+            echo '<pre>' . print_r($result, true) . '</pre>';
+            $validation[$i] = $this->isUnique($result);
+
         }
 
-        echo '<pre>' . print_r($data, true) . '</pre>';
 
+        return $validation;
+    }
 
+    private function isUnique($arr)
+    {
+        $firstValue = current($arr);
+        foreach ($arr as $val) {
+            if ($firstValue != $val and $firstValue != 1) {
+                return 0;
+            }
+        }
+        return 1;
+
+    }
+
+    private function check($value, $rules)
+    {
+        foreach ($rules as $rule) {
+            if ($rule[0] == 'min') {
+                $result[] = $this->min($value, $rule[1]);
+            } elseif ($rule[0] == 'max') {
+                $result[] = $this->max($value, $rule[1]);
+            }
+        }
+        return $result;
     }
 
     private function min($value, $n)
     {
-
+        return (mb_strlen($value) > $n);
     }
 
     private function max($value, $n)
     {
-
+        return (mb_strlen($value) < $n);
     }
 
 

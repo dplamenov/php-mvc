@@ -15,9 +15,11 @@ class Welcome extends Controller
 
     public function storeData(\Application\Request $request)
     {
-        $this->validate($request, [
-            'name' => 'min:5|max:8',
+        $validation = $this->validate($request, [
+            'name' => 'min:2|max:8',
         ]);
+
+        echo '<pre>' . print_r($validation, true) . '</pre>';
     }
 
 }
