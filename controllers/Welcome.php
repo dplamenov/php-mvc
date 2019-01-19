@@ -16,7 +16,7 @@ class Welcome extends Controller
     public function storeData(\Application\Request $request)
     {
         $validation = $this->validate($request, [
-            'name' => 'min:2|max:8',
+            'name' => 'min:2|max:8|string',
         ]);
 
         var_dump($validation);

@@ -41,7 +41,7 @@ trait Validate
             $result[$i] = $this->check($value, $data[$i]['rules']);
 
         }
-
+        echo '<pre>' . print_r($result, true) . '</pre>';
         foreach ($result as $key => $value) {
             foreach ($result[$key] as $item) {
                 $validation = 0;
@@ -88,6 +88,12 @@ trait Validate
                 } else {
                     $result[] = 0;
                 }
+            } elseif ($rule[0]) {
+                if ($this->string($value) == true) {
+                    $result[] = $this->string($value);
+                } else {
+                    $result[] = 0;
+                }
             }
         }
         return $result;
@@ -101,6 +107,11 @@ trait Validate
     private function max($value, $n)
     {
         return (mb_strlen($value) <= $n);
+    }
+
+    private function string($value)
+    {
+        return (bool)preg_match('/^([a-z])+$/i', $value);
     }
 
 
