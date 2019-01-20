@@ -129,7 +129,7 @@ trait Validate
     {
         foreach ($data as $_key => $_value) {
             if ($_value == $value) {
-                return "The `$_key` must be string";
+                return "The `$_key` must be a string";
             }
         }
         return 0;
