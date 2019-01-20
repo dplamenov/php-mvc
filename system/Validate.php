@@ -76,7 +76,6 @@ trait Validate
 
     private function check($value, $rules, &$error, $request, $i)
     {
-        $counter = 0;
         foreach ($rules as $rule) {
             if ($rule[0] == 'min') {
                 if ($this->min($value, $rule[1]) == true) {
@@ -105,13 +104,18 @@ trait Validate
         return $result;
     }
 
+    private function asGenerator(&$arr)
+    {
+        foreach ($arr as $key => $element) {
+            yield $key;
+        }
+    }
+
     private function error_min($value, $n, $data, $counter)
     {
-
         foreach ($data as $_key => $_value) {
             if ($_value == $value) {
                 $generator = $this->asGenerator($data);
-                //echo $counter;
                 if ($counter == 0) {
                     return "The length of `" . $generator->current() . "` must be more of $n";
                 } else {
@@ -119,19 +123,12 @@ trait Validate
                     return "The length of `" . $generator->current() . "` must be more of $n";
                 }
 
-
             }
         }
         return 0;
 
     }
 
-    private function asGenerator(&$arr)
-    {
-        foreach ($arr as $key => $element) {
-            yield $key;
-        }
-    }
 
     private function error_max($value, $n, $data)
     {
