@@ -12,3 +12,5 @@
 - Default value
 - When you get session by name as second param you can set default value <br> Example: <br>
 <pre><code> $request->session()->get('islogged', false);</code></pre>
+
+<a href="08request.md">Next</a>
