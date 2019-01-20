@@ -31,7 +31,7 @@ class Validation
         return $this->status;
     }
 
-    public function getError()
+    public function errors()
     {
         return $this->error;
     }
