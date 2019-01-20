@@ -23,7 +23,9 @@ class Validation
 
     public function getData()
     {
-        return $this->request;
-
+        if ($this->status == true) {
+            return $this->request;
+        }
+        return $this->status;
     }
 }
