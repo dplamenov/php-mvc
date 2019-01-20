@@ -33,6 +33,10 @@ class Validation
 
     public function errors()
     {
+        foreach ($this->error as &$error) {
+            $error = $error . '.';
+        }
+
         return $this->error;
     }
 
