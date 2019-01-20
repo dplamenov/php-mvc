@@ -39,10 +39,11 @@ trait Validate
         $validation = array();
         for ($i = 0; $i <= count($data) - 1; $i++) {
             $value = $data[$i]['value'];
-            $result[$i] = $this->check($value, $data[$i]['rules'], $error, $request_);
+
+            $result[$i] = $this->check($value, $data[$i]['rules'], $error, $request_, $i);
 
         }
-        foreach ($result as $key => $value) {
+        foreach ($result as $key => $vwalue) {
             foreach ($result[$key] as $item) {
                 $validation = 0;
                 if ($this->same($result[$key])) {
@@ -73,14 +74,15 @@ trait Validate
     }
 
 
-    private function check($value, $rules, &$error, $request)
+    private function check($value, $rules, &$error, $request, $i)
     {
+        $counter = 0;
         foreach ($rules as $rule) {
             if ($rule[0] == 'min') {
                 if ($this->min($value, $rule[1]) == true) {
                     $result[] = $this->min($value, $rule[1]);
                 } else {
-                    $error[] = $this->error_min($value, $rule[1], $request);
+                    $error[] = $this->error_min($value, $rule[1], $request, $i);
                     $result[] = 0;
                 }
 
@@ -103,15 +105,32 @@ trait Validate
         return $result;
     }
 
-    private function error_min($value, $n, $data)
+    private function error_min($value, $n, $data, $counter)
     {
+
         foreach ($data as $_key => $_value) {
             if ($_value == $value) {
-                return "The length of `$_key` must be more of $n";
+                $generator = $this->asGenerator($data);
+                //echo $counter;
+                if ($counter == 0) {
+                    return "The length of `" . $generator->current() . "` must be more of $n";
+                } else {
+                    $generator->next();
+                    return "The length of `" . $generator->current() . "` must be more of $n";
+                }
+
+
             }
         }
         return 0;
 
+    }
+
+    private function asGenerator(&$arr)
+    {
+        foreach ($arr as $key => $element) {
+            yield $key;
+        }
     }
 
     private function error_max($value, $n, $data)
@@ -119,6 +138,8 @@ trait Validate
         foreach ($data as $_key => $_value) {
             if ($_value == $value) {
                 return "The length of `$_key` must be less of $n";
+            } elseif ($value == ' ' && $data[$_key] == '') {
+                return '   we2';
             }
         }
         return 0;
@@ -129,6 +150,8 @@ trait Validate
     {
         foreach ($data as $_key => $_value) {
             if ($_value == $value) {
+                return "The `$_key` must be a string";
+            } elseif ($value == ' ' && $data[$_key] == '') {
                 return "The `$_key` must be a string";
             }
         }

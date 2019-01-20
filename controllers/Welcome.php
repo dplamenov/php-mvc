@@ -19,7 +19,6 @@ class Welcome extends Controller
             'name' => 'min:2|max:8|string',
             'password' => 'min:5'
         ])->errors();
-
         echo '<pre>' . print_r($validation, true) . '</pre>';
     }
 
