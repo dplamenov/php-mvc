@@ -43,16 +43,18 @@ trait Validate
             $result[$i] = $this->check($value, $data[$i]['rules'], $error, $request_, $i);
 
         }
-        foreach ($result as $key => $vwalue) {
+
+        foreach ($result as $key => $value) {
             foreach ($result[$key] as $item) {
                 $validation = 0;
                 if ($this->same($result[$key])) {
-                    $validation = 1;
+
+                    $validation += 1;
                 }
             }
         }
 
-        if ($validation == 1) {
+        if ($validation == count($data)) {
             $validation = true;
         } else {
             $validation = false;
@@ -148,9 +150,9 @@ trait Validate
         foreach ($data as $_key => $_value) {
             if ($_value == $value) {
                 return "The `$_key` must be a string";
-            } elseif ($value == ' ' && $data[$_key] == '') {
-                return "The `$_key` must be a string";
             }
+
+
         }
         return 0;
     }

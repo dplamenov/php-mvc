@@ -18,8 +18,14 @@ class Welcome extends Controller
         $validation = $this->validate($request, [
             'name' => 'min:2|max:8|string',
             'password' => 'min:5'
-        ])->errors();
-        echo '<pre>' . print_r($validation, true) . '</pre>';
+        ]);
+        if ($validation->getStatus() == true) {
+            return 'ok';
+        } else {
+            foreach ($validation->errors() as $error) {
+                echo $error . '<br>';
+            }
+        }
     }
 
 }
