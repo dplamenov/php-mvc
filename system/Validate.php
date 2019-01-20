@@ -91,14 +91,14 @@ trait Validate
                 if ($this->max($value, $rule[1]) == true) {
                     $result[] = $this->max($value, $rule[1]);
                 } else {
-                    $error[] = $this->error_max($value, $rule[1], $request);
+                    $error[] = $this->error_max($value, $rule[1], $request, $i);
                     $result[] = 0;
                 }
             } elseif ($rule[0]) {
                 if ($this->string($value) == true) {
                     $result[] = $this->string($value);
                 } else {
-                    $error[] = $this->error_string($value, $request);
+                    $error[] = $this->error_string($value, $request, $i);
                     $result[] = 0;
                 }
             }
@@ -132,24 +132,36 @@ trait Validate
     }
 
 
-    private function error_max($value, $n, $data)
+    private function error_max($value, $n, $data, $counter)
     {
         foreach ($data as $_key => $_value) {
             if ($_value == $value) {
-                return "The length of `$_key` must be less of $n";
-            } elseif ($value == ' ' && $data[$_key] == '') {
-                return '   we2';
+                $generator = $this->asGenerator($data);
+                if ($counter == 0) {
+                    return "The length of `" . $generator->current() . "` must be less of $n";
+                } else {
+                    $generator->next();
+                    return "The length of `" . $generator->current() . "` must be less of $n";
+                }
+
             }
         }
         return 0;
 
     }
 
-    private function error_string($value, $data)
+    private function error_string($value, $data, $counter)
     {
         foreach ($data as $_key => $_value) {
             if ($_value == $value) {
-                return "The `$_key` must be a string";
+                $generator = $this->asGenerator($data);
+                if ($counter == 0) {
+                    return "The `" . $generator->current() . "` must be a string";
+                } else {
+                    $generator->next();
+                    return "The `" . $generator->current() . "` must be a string";
+                }
+
             }
 
 

@@ -17,7 +17,7 @@ class Welcome extends Controller
     {
         $validation = $this->validate($request, [
             'name' => 'min:2|max:8|string',
-            'password' => 'min:5'
+            'password' => 'min:5|string'
         ]);
         if ($validation->getStatus() == true) {
             return 'ok';
