@@ -8,6 +8,7 @@ trait Validate
     final public function validate(Request $request, array $validate_rules)
     {
         $request = $request->post();
+        $error = array();
         $request_ = array();
         $data = array();
         foreach ($validate_rules as $name => $rule) {
@@ -38,7 +39,7 @@ trait Validate
         $validation = array();
         for ($i = 0; $i <= count($data) - 1; $i++) {
             $value = $data[$i]['value'];
-            $result[$i] = $this->check($value, $data[$i]['rules']);
+            $result[$i] = $this->check($value, $data[$i]['rules'], $error, $request_);
 
         }
         foreach ($result as $key => $value) {
@@ -55,7 +56,7 @@ trait Validate
         } else {
             $validation = false;
         }
-        $v = new Validation($validation, $data, $request);
+        $v = new Validation($validation, $data, $request, $error);
         return $v;
     }
 
@@ -72,13 +73,14 @@ trait Validate
     }
 
 
-    private function check($value, $rules)
+    private function check($value, $rules, &$error, $request)
     {
         foreach ($rules as $rule) {
             if ($rule[0] == 'min') {
                 if ($this->min($value, $rule[1]) == true) {
                     $result[] = $this->min($value, $rule[1]);
                 } else {
+                    $error[] = $this->error_min($value, $rule[1], $request);
                     $result[] = 0;
                 }
 
@@ -86,17 +88,51 @@ trait Validate
                 if ($this->max($value, $rule[1]) == true) {
                     $result[] = $this->max($value, $rule[1]);
                 } else {
+                    $error[] = $this->error_max($value, $rule[1], $request);
                     $result[] = 0;
                 }
             } elseif ($rule[0]) {
                 if ($this->string($value) == true) {
                     $result[] = $this->string($value);
                 } else {
+                    $error[] = $this->error_string($value, $request);
                     $result[] = 0;
                 }
             }
         }
         return $result;
+    }
+
+    private function error_min($value, $n, $data)
+    {
+        foreach ($data as $_key => $_value) {
+            if ($_value == $value) {
+                return "The length of `$_key` must be more of $n";
+            }
+        }
+        return 0;
+
+    }
+
+    private function error_max($value, $n, $data)
+    {
+        foreach ($data as $_key => $_value) {
+            if ($_value == $value) {
+                return "The length of `$_key` must be less of $n";
+            }
+        }
+        return 0;
+
+    }
+
+    private function error_string($value, $data)
+    {
+        foreach ($data as $_key => $_value) {
+            if ($_value == $value) {
+                return "The `$_key` must be string";
+            }
+        }
+        return 0;
     }
 
     private function min($value, $n)

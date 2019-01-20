@@ -8,12 +8,14 @@ class Validation
     private $status;
     private $data;
     private $request;
+    private $error;
 
-    public function __construct($status, $data, $request)
+    public function __construct($status, $data, $request, $error)
     {
         $this->status = $status;
         $this->data = $data;
         $this->request = $request;
+        $this->error = $error;
     }
 
     public function getStatus()
@@ -27,5 +29,10 @@ class Validation
             return $this->request;
         }
         return $this->status;
+    }
+
+    public function getError()
+    {
+        return $this->error;
     }
 }
