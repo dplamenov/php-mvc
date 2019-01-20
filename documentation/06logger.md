@@ -14,6 +14,7 @@ List of methods
 <li>addCritical($msg)</li>
 <li>alert($msg)
 </ol>
+
 - You can use them so:
 
 <pre><code>$log->error('Some error');</code></pre>
