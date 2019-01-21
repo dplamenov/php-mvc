@@ -1,4 +1,8 @@
-<h1>{{$num}}Welcome</h1>
+<h1>Welcome</h1>
+@php
+
+echo 'Hello';
+@endphp
 
 <form method="post">
     <input type="text" name="name"/>
