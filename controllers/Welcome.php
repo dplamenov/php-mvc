@@ -19,6 +19,7 @@ class Welcome extends Controller
             'name' => 'min:2|max:8|string',
             'password' => 'min:5|string'
         ]);
+
         if ($validation->getStatus() == true) {
             return 'ok';
         } else {

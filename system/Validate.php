@@ -44,21 +44,25 @@ trait Validate
 
         }
 
+        $validation = 0;
         foreach ($result as $key => $value) {
             foreach ($result[$key] as $item) {
-                $validation = 0;
                 if ($this->same($result[$key])) {
-
                     $validation += 1;
                 }
             }
         }
 
-        if ($validation == count($data)) {
+        $count = 0;
+        foreach ($result as $key => $value) {
+            $count += count($result[$key]);
+        }
+        if ($validation == $count) {
             $validation = true;
         } else {
             $validation = false;
         }
+
         $v = new Validation($validation, $data, $request, $error);
         return $v;
     }
