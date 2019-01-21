@@ -1,9 +1,5 @@
 <h1>Welcome</h1>
-@php
-
-echo 'Hello';
-@endphp
-
+{{$num}}
 <form method="post">
     <input type="text" name="name"/>
     <input type="text" name="password"/>

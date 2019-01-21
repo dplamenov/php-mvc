@@ -8,18 +8,14 @@ class Base
     public static function View(String $view, $data = [])
     {
         $template = file_get_contents('../views/' . $view . ".php");
+        echo '<pre>' . print_r($data, true) . '</pre>';
         foreach ($data as $key => $value) {
             $$key = $value;
-
-            if (is_string($value)) {
-                $template = str_replace($key, self::e($value), $template);
+            if (!is_array($value)) {
+                $template = str_replace($key, $$key, $template);
             }
             $template = str_replace('{{$', '', $template);
             $template = str_replace('}}', '', $template);
-            $parsed = self::get_string_between($template, '@php', '@endphp');
-            $template = str_replace('@php', eval($parsed), $template);
-            $template = str_replace('@endphp', '', $template);
-
 
 
         }
