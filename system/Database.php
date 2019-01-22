@@ -179,7 +179,8 @@ class Database
             $sql = str_replace('?', '', $sql);
             $result = mysqli_query(self::$database, $sql);
         }
-        
+
+
         return $result;
     }
 

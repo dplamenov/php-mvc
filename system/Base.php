@@ -8,7 +8,6 @@ class Base
     public static function View(String $view, $data = [])
     {
         $template = file_get_contents('../views/' . $view . ".php");
-        echo '<pre>' . print_r($data, true) . '</pre>';
         foreach ($data as $key => $value) {
             $$key = $value;
             if (!is_array($value)) {
