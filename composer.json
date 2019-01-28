@@ -2,6 +2,8 @@
   "name": "dplamenov/php-mvc",
   "require": {
     "monolog/monolog": "1.24.0",
-    "ext-mysqli": "*"
+    "ext-mysqli": "*",
+    "ext-pdo": "*"
+
   }
 }
