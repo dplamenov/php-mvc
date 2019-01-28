@@ -1,11 +1,4 @@
 <?php
-/**
- * Project: php-mvc.
- * File: PDO.php
- * Developer: dplamenov@icloud.com
- * Date: 22.1.2019 г.
- * Time: 10:39
- */
 
 namespace Application;
 
