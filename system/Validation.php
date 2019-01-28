@@ -10,6 +10,13 @@ class Validation
     private $request;
     private $error;
 
+    /**
+     * Validation constructor.
+     * @param $status
+     * @param $data
+     * @param $request
+     * @param $error
+     */
     public function __construct($status, $data, $request, $error)
     {
         $this->status = $status;
@@ -18,11 +25,17 @@ class Validation
         $this->error = $error;
     }
 
+    /**
+     * @return mixed
+     */
     public function getStatus()
     {
         return $this->status;
     }
 
+    /**
+     * @return mixed
+     */
     public function getData()
     {
         if ($this->status == true) {
@@ -31,6 +44,9 @@ class Validation
         return $this->status;
     }
 
+    /**
+     * @return mixed
+     */
     public function errors()
     {
         foreach ($this->error as &$error) {
