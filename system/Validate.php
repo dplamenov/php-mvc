@@ -98,11 +98,18 @@ trait Validate
                     $error[] = $this->error_max($value, $rule[1], $request, $i);
                     $result[] = 0;
                 }
-            } elseif ($rule[0]) {
+            } elseif ($rule[0] == 'string') {
                 if ($this->string($value) == true) {
                     $result[] = $this->string($value);
                 } else {
                     $error[] = $this->error_string($value, $request, $i);
+                    $result[] = 0;
+                }
+            } else if ($rule[0] == 'required') {
+                if ($this->required($value) == true) {
+                    $result[] = $this->required($value);
+                } else {
+                    $error[] = $this->error_required($value, $request, $i);
                     $result[] = 0;
                 }
             }
@@ -173,6 +180,25 @@ trait Validate
         return 0;
     }
 
+    private function error_required($value, $data, $counter)
+    {
+        foreach ($data as $_key => $_value) {
+            if ($_value == $value) {
+                $generator = $this->asGenerator($data);
+                if ($counter == 0) {
+                    return "The `" . $generator->current() . "` must be a required";
+                } else {
+                    $generator->next();
+                    return "The `" . $generator->current() . "` must be a required";
+                }
+
+            }
+
+        }
+        return 0;
+
+    }
+
     private function min($value, $n)
     {
         return (mb_strlen($value) >= $n);
@@ -186,6 +212,11 @@ trait Validate
     private function string($value)
     {
         return (bool)preg_match('/^([a-z])+$/i', $value);
+    }
+
+    private function required($value)
+    {
+        return (bool)isset($value);
     }
 
 
