@@ -7,6 +7,7 @@ class PDO
 {
     private $pdo;
     private static $instance = null;
+
     protected function __construct($dsn, $user, $password)
     {
         $this->pdo = new \PDO($dsn, $user, $password);
