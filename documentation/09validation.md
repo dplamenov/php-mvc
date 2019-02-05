@@ -6,3 +6,6 @@ from `$this`
 <pre>
 <code>$this->validate()</code>
 </pre>
+- Validate method is from Validate trait.
+- Validate method expected two parameters:
+ - First param is Object of type Request (this is data).
