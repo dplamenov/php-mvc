@@ -9,3 +9,4 @@ from `$this`
 - Validate method is from Validate trait.
 - Validate method expected two parameters:
  - First param is Object of type Request (this is data).
+ - Second param is validation rules as associative array.
