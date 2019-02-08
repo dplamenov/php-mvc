@@ -8,5 +8,14 @@ from `$this`
 </pre>
 - Validate method is from Validate trait.
 - Validate method expected two parameters:
- - First param is Object of type Request (this is data).
- - Second param is validation rules as associative array.
+- First param is Object of type Request (this is data).
+- Second param is validation rules as associative array.
+
+#Validation rules
+1. min
+2. max
+3. string
+4. required
+
+
+ 
