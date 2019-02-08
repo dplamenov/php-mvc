@@ -23,11 +23,8 @@ class Route
 
     public static function post($route, $controller)
     {
-        if (is_string($controller)) {
-            self::$route_post[$route] = $controller;
-        } else {
-            echo $controller();
-            exit;
+        if ($controller) {
+            self::$route_get[$route] = $controller;
         }
 
     }
