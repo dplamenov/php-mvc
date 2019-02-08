@@ -7,6 +7,12 @@ class Route
     private static $route_post = array();
 
 
+    public function __construct()
+    {
+
+
+    }
+
     public static function get($route, $controller)
     {
         if ($controller) {
@@ -24,7 +30,7 @@ class Route
     public static function post($route, $controller)
     {
         if ($controller) {
-            self::$route_get[$route] = $controller;
+            self::$route_post[$route] = $controller;
         }
 
     }
