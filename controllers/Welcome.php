@@ -9,7 +9,7 @@ class Welcome extends Controller
     public function showForm(\Application\Request $request)
     {
         $user = new \Models\User();
-        $user->test();
+        $user->find(1);
         $request->session()->put('num', $request->session()->get('num') + 1);
         $num = $request->session()->get('num');
         return Base::View('welcome', ['num' => $num]);

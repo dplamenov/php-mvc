@@ -7,8 +7,6 @@ use Application\Model;
 
 class User extends Model
 {
-    public function test()
-    {
-    }
+    protected $tableName = 'user';
 
 }
