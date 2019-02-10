@@ -33,11 +33,12 @@ class Application
     private function run()
     {
         self::$route = \Application\FrontControllers::$route;
+        $route = new Route();
         if (strtolower($_SERVER['REQUEST_METHOD']) == 'get') {
-            self::$routelist = \Application\Route::getGetRoute();
+            self::$routelist = $route->getGetRoute();
             self::$frontcontroller = \Application\FrontControllers::getInstance(self::$routelist);
         } elseif (strtolower($_SERVER['REQUEST_METHOD']) == 'post') {
-            self::$routelist = \Application\Route::getPostRoute();
+            self::$routelist = $route->getPostRoute();
             self::$frontcontroller = \Application\FrontControllers::getInstance(self::$routelist);
         } else {
             echo 'Method dint exist';

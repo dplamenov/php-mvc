@@ -6,6 +6,7 @@ class Route
     private static $route_get = array();
     private static $route_post = array();
 
+
     public static function get($route, $controller)
     {
         if ($controller) {
@@ -15,7 +16,7 @@ class Route
 
     }
 
-    public static function getGetRoute()
+    public function getGetRoute()
     {
         return self::$route_get;
     }
@@ -28,7 +29,7 @@ class Route
 
     }
 
-    public static function getPostRoute()
+    public function getPostRoute()
     {
         return self::$route_post;
     }
