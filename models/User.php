@@ -3,7 +3,9 @@
 namespace Models;
 
 
-class User
+use Application\Model;
+
+class User extends Model
 {
 
 }
