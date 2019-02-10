@@ -46,7 +46,8 @@ class Application
 
     public function load($class)
     {
-        $class = str_replace("Application\\", "", $class);
-        include_once $class . '.php';
+        $dir = str_replace('\Application', '', __DIR__);
+
+        include_once $dir . '\\' . $class . '.php';
     }
 }
