@@ -6,13 +6,6 @@ class Route
     private static $route_get = array();
     private static $route_post = array();
 
-
-    public function __construct()
-    {
-
-
-    }
-
     public static function get($route, $controller)
     {
         if ($controller) {
