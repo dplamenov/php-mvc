@@ -82,6 +82,7 @@ class Database
         } else {
 
             $count = substr_count($sql, '?');
+
             $counter = 0;
             while ($count != 0) {
                 if (is_string($data[$counter])) {
@@ -89,7 +90,8 @@ class Database
                     $sql = substr_replace($sql, "'$escape_data'", strpos($sql, '?', strpos($sql, '?') + $counter), 0);
                 } else {
                     $escape_data = mysqli_real_escape_string(self::$database, $data[$counter]);
-                    $sql = substr_replace($sql, $escape_data, strpos($data[$counter], '?', strpos($sql, '?') + $counter), 0);
+
+                    $sql = substr_replace($sql, $escape_data, strpos($sql, '?', strpos($sql, '?') + $counter), 0);
                 }
                 $counter++;
                 $count--;

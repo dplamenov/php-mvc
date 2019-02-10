@@ -7,6 +7,7 @@ use Application\Model;
 
 class User extends Model
 {
-    protected $tableName = 'user';
+    protected $tableName = 'users';
+    protected $primaryKey = 'user_id';
 
 }

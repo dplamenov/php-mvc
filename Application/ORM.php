@@ -5,16 +5,23 @@ namespace Application;
 trait ORM
 {
     private $_primaryKey;
-    private $_tableName = 'id';
+    private $_tableName;
+
+    /**
+     * @var Database
+     */
+    private $database;
 
     public function find(int $id)
     {
-
+        $result = $this->database->select('SELECT * FROM ' . $this->_tableName . ' WHERE ' . $this->_primaryKey . ' = ?', [$id]);
+        return $result;
     }
 
-    private function init($primaryKey, $tableName)
+    private function init($tableName, $primaryKey)
     {
-        echo $primaryKey;
-        echo $tableName;
+        $this->_primaryKey = $primaryKey;
+        $this->_tableName = $tableName;
+        $this->database = Database::init();
     }
 }
