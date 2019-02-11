@@ -14,8 +14,8 @@ trait ORM
 
     public function find(int $id)
     {
-        $result = $this->database->select('SELECT * FROM ' . $this->_tableName . ' WHERE ' . $this->_primaryKey . ' = ?', [$id]);
-        return $result;
+        return $this->database->select('SELECT * FROM ' . $this->_tableName . ' WHERE ' . $this->_primaryKey . ' = ?', [$id]);
+
     }
 
     private function init($tableName, $primaryKey)
