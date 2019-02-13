@@ -19,7 +19,7 @@ trait ORM
 
     public function where($column, $operator, $value)
     {
-
+        return $this->database->select("SELECT * FROM " . $this->_tableName . " WHERE $column $operator $value");
     }
 
     private function init($tableName, $primaryKey)
