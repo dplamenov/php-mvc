@@ -10,3 +10,6 @@ class User extends Model
 }
     </code>
 </pre>
+- You model will have the following methods:
+- find($primaryKey) - return the item with this `primary key`
+- where()
