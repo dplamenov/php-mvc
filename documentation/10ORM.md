@@ -12,4 +12,10 @@ class User extends Model
 </pre>
 - You model will have the following methods:
 - find($primaryKey) - return the item with this `primary key`
-- where()
+- where($column, $operator, $value) Example use <br>
+<pre>
+    <code>
+  $user = new \Models\User();
+  $users = $user->where('user_id', '<', 2); //return all users where user_id < 2
+    </code>
+</pre>
