@@ -7,6 +7,9 @@ trait ORM
     private $_primaryKey;
     private $_tableName;
 
+    private $result;
+    private $dynamicData;
+
     /**
      * @var Database
      */
@@ -14,7 +17,9 @@ trait ORM
 
     public function find(int $id)
     {
-        return $this->database->select('SELECT * FROM ' . $this->_tableName . ' WHERE ' . $this->_primaryKey . ' = ?', [$id]);
+        $data = $this->database->select('SELECT * FROM ' . $this->_tableName . ' WHERE ' . $this->_primaryKey . ' = ?', [$id]);
+
+        return new ORMData($data);
     }
 
     public function where($column, $operator, $value)
@@ -29,13 +34,5 @@ trait ORM
         $this->database = Database::init();
     }
 
-    public function __set($name, $value)
-    {
-        // TODO: Implement __set() method.
-    }
 
-    public function __get($name)
-    {
-        // TODO: Implement __get() method.
-    }
 }
