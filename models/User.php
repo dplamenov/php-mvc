@@ -9,5 +9,4 @@ class User extends Model
 {
     protected $tableName = 'users';
     protected $primaryKey = 'user_id';
-
 }
