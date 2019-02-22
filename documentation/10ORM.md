@@ -11,7 +11,7 @@ class User extends Model
     </code>
 </pre>
 - You model will have the following methods:
-- find($primaryKey) - return the item with this `primary key`
+- find($primaryKey) - return the item with this `primary key` (will return only one element)
 - where($column, $operator, $value) Example use <br>
 <pre>
     <code>

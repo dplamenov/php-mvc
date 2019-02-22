@@ -10,7 +10,6 @@ class Welcome extends Controller
     {
         $user = new \Models\User();
         $user_data = $user->find(2);
-        echo '<pre>' . print_r($user_data->username, true) . '</pre>';
         $request->session()->put('num', $request->session()->get('num') + 1);
         $num = $request->session()->get('num');
         return Base::View('welcome', ['num' => $num]);
