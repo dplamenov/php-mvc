@@ -8,7 +8,7 @@ trait ORM
     private $_tableName;
 
     private $result;
-    private $dynamicData;
+    private $dynamicData = array();
 
     /**
      * @var Database
@@ -37,6 +37,7 @@ trait ORM
     public function __set($name, $value)
     {
         //for create new item
+        $this->dynamicData[$name] = $value;
     }
 
 
