@@ -22,4 +22,9 @@ class ORMData
     {
         return $this->result[0]->$name;
     }
+
+    public function save()
+    {
+
+    }
 }

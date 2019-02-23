@@ -34,11 +34,6 @@ trait ORM
         $this->database = Database::init();
     }
 
-    public function __set($name, $value)
-    {
-        //for create new item
-        $this->dynamicData[$name] = $value;
-    }
 
 
 }
