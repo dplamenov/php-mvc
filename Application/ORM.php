@@ -19,7 +19,7 @@ trait ORM
     {
         $data = $this->database->select('SELECT * FROM ' . $this->_tableName . ' WHERE ' . $this->_primaryKey . ' = ?', [$id]);
 
-        return new ORMData($data, $this->_tableName);
+        return new ORMData($data, $this->_tableName, $this->_primaryKey, $id);
     }
 
     public function where($column, $operator, $value)
