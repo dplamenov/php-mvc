@@ -38,7 +38,6 @@ trait ORM
     public function __set($name, $value)
     {
         $this->data[$name] = $value;
-        //TODO: Implement __set() method.
     }
 
     public function save()
