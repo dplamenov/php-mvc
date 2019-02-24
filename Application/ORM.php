@@ -56,7 +56,7 @@ trait ORM
         }
         $sql .= implode(', ', $columns) . ') VALUES (';
         $sql .= implode(', ', $data) . ')';
-        echo '<pre>' . print_r($this->data, true) . '</pre>';
+
     }
 
 
