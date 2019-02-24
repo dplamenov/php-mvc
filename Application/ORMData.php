@@ -7,10 +7,14 @@ class ORMData
 {
     private $result;
     private $database;
-    public function __construct($data)
+    private $table;
+
+
+    public function __construct($data, $table)
     {
         $this->result = $data;
         $this->database = Database::init();
+        $this->table = $table;
     }
 
     public function __set($name, $value)
@@ -24,9 +28,11 @@ class ORMData
         return $this->result->$name;
     }
 
-    public function save()
+    public function update()
     {
-
+        foreach ($this->result[0] as $item => $value) {
+            $this->database->update('UPDATE ');
+        }
         echo '<pre>' . print_r($this->result, true) . '</pre>';
     }
 }
