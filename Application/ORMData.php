@@ -37,9 +37,8 @@ class ORMData
     {
         foreach ($this->result[0] as $item => $value) {
             $sql = 'UPDATE `' . $this->table . '` SET `' . $item . '` = ' . "$value" . 'WHERE ' . $this->primaryKey . ' = ' . $this->id;
-            echo $sql . '<br>';
             $this->database->update($sql);
         }
-        echo '<pre>' . print_r($this->result, true) . '</pre>';
+
     }
 }
