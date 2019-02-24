@@ -34,6 +34,15 @@ trait ORM
         $this->database = Database::init();
     }
 
+    public function __set($name, $value)
+    {
+        // TODO: Implement __set() method.
+    }
+
+    public function save()
+    {
+
+    }
 
 
 }
