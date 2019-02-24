@@ -51,12 +51,12 @@ trait ORM
             $columns[$key] = '`' . $column . '`';
         }
         foreach ($data as $key => $datum) {
-            $data[$key] = '`' . $datum . '`';
+            $data[$key] = '"' . $datum . '"';
         }
         $sql .= implode(', ', $columns) . ') VALUES (';
         $sql .= implode(', ', $data) . ')';
 
-        $this->database->query($sql);
+        $r = $this->database->query($sql);
     }
 
 
