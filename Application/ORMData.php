@@ -39,6 +39,5 @@ class ORMData
             $sql = 'UPDATE `' . $this->table . '` SET `' . $item . '` = ' . "$value" . 'WHERE ' . $this->primaryKey . ' = ' . $this->id;
             $this->database->update($sql);
         }
-
     }
 }

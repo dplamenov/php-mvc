@@ -6,6 +6,7 @@ from `$this`
 <pre>
 <code>$this->validate()</code>
 </pre>
+- Validate working only with post data.
 - Validate method is from Validate trait.
 - Validate method expected two parameters:
 - First param is Object of type Request (this is data).
