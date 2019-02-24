@@ -43,7 +43,20 @@ trait ORM
 
     public function save()
     {
-
+        foreach ($this->data as $item => $value) {
+            $columns[] = $item;
+            $data[] = $value;
+        }
+        $sql = 'INSERT INTO `' . $this->_tableName . '` (';
+        foreach ($columns as $key => $column) {
+            $columns[$key] = '`' . $column . '`';
+        }
+        foreach ($data as $key => $datum) {
+            $data[$key] = '`' . $datum . '`';
+        }
+        $sql .= implode(', ', $columns) . ') VALUES (';
+        $sql .= implode(', ', $data) . ')';
+        echo '<pre>' . print_r($this->data, true) . '</pre>';
     }
 
 
