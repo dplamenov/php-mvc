@@ -57,6 +57,7 @@ trait ORM
         $sql .= implode(', ', $columns) . ') VALUES (';
         $sql .= implode(', ', $data) . ')';
 
+        $this->database->query($sql);
     }
 
 
