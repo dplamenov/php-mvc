@@ -30,7 +30,7 @@ class ORMData
 
     public function __get($name)
     {
-        return $this->result->$name;
+        return $this->result[0]->$name;
     }
 
     public function update()

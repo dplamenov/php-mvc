@@ -9,13 +9,12 @@ class Welcome extends Controller
     public function showForm(\Application\Request $request)
     {
         $user = new \Models\User();
-
-        $user->username = 'username_';
-        $user->password = 'password_';
-        $user->save();
+        $a = $user->find(1);
+        var_dump($a->username);
         $request->session()->put('num', $request->session()->get('num') + 1);
         $num = $request->session()->get('num');
         return Base::View('welcome', ['num' => $num]);
+
 
     }
 
