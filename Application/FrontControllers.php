@@ -12,6 +12,11 @@ class FrontControllers extends Request
     {
     }
 
+    private static function methodDidnotExists()
+    {
+        throw new \Exception("<h1 style=\"color: red\">Error: Method didnt exists</h1>");
+    }
+
     public static function getInstance($routelist)
     {
         $uri = $_SERVER['REQUEST_URI'];
@@ -30,27 +35,21 @@ class FrontControllers extends Request
             self::$routes[$route] = $controller;
             $route_new = ltrim($route, '/');
 
-
             if (self::$route == $route_new) {
-
                 if ($controller instanceof \Closure) {
                     echo $controller();
                     $i++;
                 } else {
                     try {
-
                         $method = explode("@", $controller)[1];
                         $controller = explode("@", $controller)[0];
                         include_once '../controllers/' . $controller . '.php';
                         $object = new $controller;
                         if (method_exists($object, $method)) {
                             echo $object->$method(new Request());
-
-
                         } else {
-                            throw new \Exception("<h1 style=\"color: red\">Error: Method didnt exists</h1>");
+                            self::methodDidnotExists();
                         }
-
                         $i++;
                     } catch (\Exception $e) {
                         echo $e->getMessage();
@@ -60,10 +59,14 @@ class FrontControllers extends Request
             } elseif (substr($route_new, 0, strlen('{')) == '{') {
                 $route_new = str_replace('{', '', $route_new);
                 $route_new = str_replace('}', '', $route_new);
+                $requestUri = $_SERVER['REQUEST_URI'];
+                $request = str_replace('/index.php', '', $_SERVER['PHP_SELF']);
+                $param = ltrim($requestUri, '/');
                 if ($controller instanceof \Closure) {
                     echo $controller();
                     $i++;
-                } elseif (substr_count($route_new, '/') == substr_count(self::$route, '/')) {
+                } elseif (substr_count($route, '/') == substr_count($request, '/')) {
+                    var_dump($route_new, self::$route);
                     $_GET[$route_new] = self::$route;
                     unset($_GET['url']);
                     $method = explode("@", $controller)[1];
@@ -71,35 +74,24 @@ class FrontControllers extends Request
                     include_once '../controllers/' . $controller . '.php';
                     $object = new $controller;
                     if (method_exists($object, $method)) {
-                        echo $object->$method(new Request());
+                        echo $object->$method(new Request(), $param);
                     } else {
-                        throw new \Exception("<h1 style=\"color: red\">Error: Method didnt exists</h1>");
+                        self::methodDidnotExists();
                     }
                     $i++;
                 }
-
-
             }
-
             if ($i != 0) {
                 break;
             }
-
-
         }
         if (self::$route == "") {
             self::$route = "/";
         }
-
         if ($i == 0) {
             $uri = $_SERVER['REQUEST_URI'];
-            $route = str_replace("index.php", "", $_SERVER['SCRIPT_NAME']);
-            $route = str_replace($route, "", $uri);
-            echo '<h1 style="color: red">Error: Route "' . $route . '" is not declared in route file. Method: ' . $_SERVER['REQUEST_METHOD'] . '</h1>';
+            echo '<h1 style="color: red">Error: Route "' . $uri . '" is not declared in route file. Method: ' . $_SERVER['REQUEST_METHOD'] . '</h1>';
         }
-
         return 0;
-
-
     }
 }

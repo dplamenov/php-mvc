@@ -5,16 +5,20 @@ use controller\Controller;
 
 class Welcome extends Controller
 {
+    public function index(\Application\Request $request, $id = null)
+    {
+        var_dump($request);
+        echo $id;
+    }
 
     public function showForm(\Application\Request $request)
     {
         $user = new \Models\User();
         $a = $user->find(1);
-        var_dump($a->username);
+
         $request->session()->put('num', $request->session()->get('num') + 1);
         $num = $request->session()->get('num');
         return Base::View('welcome', ['num' => $num]);
-
 
     }
 
