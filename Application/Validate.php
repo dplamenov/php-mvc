@@ -63,12 +63,13 @@ trait Validate
             $validation = false;
         }
 
-        $v = new Validation($validation, $data, $request, $error);
-        return $v;
+        return new Validation($validation, $data, $request, $error);
     }
+
 
     private function same($arr)
     {
+
         $sum = 0;
         foreach ($arr as $ar) {
             $sum += $ar;
@@ -77,6 +78,7 @@ trait Validate
         if ($sum == count($arr)) {
             return true;
         }
+        return false;
     }
 
 

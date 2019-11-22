@@ -66,7 +66,7 @@ class FrontControllers extends Request
                     echo $controller();
                     $i++;
                 } elseif (substr_count($route, '/') == substr_count($request, '/')) {
-                    var_dump($route_new, self::$route);
+
                     $_GET[$route_new] = self::$route;
                     unset($_GET['url']);
                     $method = explode("@", $controller)[1];
@@ -92,6 +92,6 @@ class FrontControllers extends Request
             $uri = $_SERVER['REQUEST_URI'];
             echo '<h1 style="color: red">Error: Route "' . $uri . '" is not declared in route file. Method: ' . $_SERVER['REQUEST_METHOD'] . '</h1>';
         }
-        return 0;
+            return 0;
     }
 }
